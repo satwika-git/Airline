@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-image: url('/assets/background3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 12px;
+  box-sizing: border-box;
+}
+
+.radio-group label {
+  display: inline-flex;       
+  align-items: center;       
+  margin-right: 20px; 
+  padding: 8px;
+  margin: 6px 0 6px;       
+  cursor: pointer;  
+  display: flex; 
+}
+
+p {
+  margin: 6px 0 6px; 
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 6px;      
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}

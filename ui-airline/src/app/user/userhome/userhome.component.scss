@@ -1,0 +1,58 @@
+.home-container {
+  width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+.passenger-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  button {
+    width: 30px;
+    height: 30px;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.passenger-control {
+  display: flex;
+  align-items: center;
+}
+
+.passenger-control button {
+  padding: 4px 8px;
+  margin: 0 4px;
+}
