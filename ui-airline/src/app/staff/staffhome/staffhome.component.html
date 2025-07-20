@@ -1,0 +1,51 @@
+<div class="layout-container">
+  <!-- Sidebar -->
+    <div class="sidebar">
+    <h3>Staff Panel</h3>
+    <ul>
+      <li><a routerLink="/staff/add-flight">Add Flight</a></li>
+      <li><a routerLink="/staff/add-location">Add Location</a></li>
+      <li><a routerLink="/staff/add-schedule">Add Schedule</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="page-container">
+    <div class="form-card">
+      <h2>Add New Flight</h2>
+
+      <form (ngSubmit)="addFlight()" #flightForm="ngForm">
+        <div class="input-row">
+          <label>Flight Code</label>
+          <input type="text" [(ngModel)]="flight.flightCode" name="flightCode" required />
+        </div>
+
+        <div class="input-row">
+          <label>From (Airport ID)</label>
+          <select [(ngModel)]="flight.departureId" name="departureId" required>
+            <option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label>To (Airport ID)</label>
+          <select [(ngModel)]="flight.arrivalId" name="arrivalId" required>
+            <option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <label>Aircraft Type</label>
+          <input type="text" [(ngModel)]="flight.aircraftType" name="aircraftType" required />
+        </div>
+
+        <div class="input-row">
+          <label>Airline ID</label>
+          <input type="number" [(ngModel)]="flight.airlineId" name="airlineId" required />
+        </div>
+
+        <button class="submit-btn" type="submit">Submit Flight</button>
+      </form>
+    </div>
+  </div>
+</div>
