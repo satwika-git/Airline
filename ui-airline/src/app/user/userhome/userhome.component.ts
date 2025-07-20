@@ -1,42 +1,91 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-userhome',
+  selector: 'app-user-home',
   templateUrl: './userhome.component.html',
-  styleUrls: ['./userhome.component.scss']
+  styleUrls: ['./userhome.component.scss'] // or .css if using CSS
 })
+export class UserHomeComponent implements OnInit {
 
-export class UserHomeComponent {
   searchForm: FormGroup;
-  passengerCount = 1;
-  minDate: string = new Date().toISOString().split('T')[0];
+  locations = [
+    { code: 'DEL', name: 'Delhi' },
+    { code: 'BLR', name: 'Bangalore' },
+    { code: 'HYD', name: 'Hyderabad' },
+    { code: 'MAA', name: 'Chennai' },
+    { code: 'BOM', name: 'Mumbai' }
+  ];
+  minDate: string = '';
 
   constructor(private fb: FormBuilder) {
     this.searchForm = this.fb.group({
-      source: ['', Validators.required],
-      destination: ['', Validators.required],
-      date: ['', Validators.required]
+      source: [''],
+      destination: [''],
+      date: [''],
+      passengers: [1]
     });
   }
 
-  increasePassenger() {
-    this.passengerCount++;
+  ngOnInit(): void {
+    this.setMinDate();
   }
 
-  decreasePassenger() {
-    if (this.passengerCount > 1) this.passengerCount--;
+  setMinDate() {
+    const today = new Date();
+    this.minDate = today.toISOString().split('T')[0];
   }
 
   onSearch() {
-    if (this.searchForm.valid) {
-      const data = {
-        ...this.searchForm.value,
-        passengers: this.passengerCount
-      };
-      console.log('Searching flights with:', data);
-    } else {
-      alert('Please fill all fields');
-    }
+    console.log(this.searchForm.value);
+    // Add API logic here
   }
 }
+
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormGroup } from '@angular/forms';
+// import { HttpClient } from '@angular/common/http';
+
+// @Component({
+//   selector: 'app-user-home',
+//   templateUrl: './userhome.component.html',
+//   styleUrls: ['./userhome.component.scss']
+// })
+// export class UserHomeComponent implements OnInit {
+
+//   searchForm: FormGroup;
+//   locations: any[] = [];
+//   minDate: string = '';
+
+//   constructor(private fb: FormBuilder, private http: HttpClient) {
+//     this.searchForm = this.fb.group({
+//       source: [''],
+//       destination: [''],
+//       date: [''],
+//       passengers: [1]
+//     });
+//   }
+
+//   ngOnInit(): void {
+//     this.setMinDate();
+//     this.getLocations();
+//   }
+
+//   setMinDate() {
+//     const today = new Date();
+//     this.minDate = today.toISOString().split('T')[0];
+//   }
+
+//   getLocations() {
+//     this.http.get<any[]>('/api/locations').subscribe((data) => {
+//       this.locations = data;
+//     });
+//   }
+
+//   onSearch() {
+//     console.log(this.searchForm.value);
+//     // Add API call here if needed
+//   }
+// }
