@@ -1,6 +1,9 @@
 .landing-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background-image: url('/assets/login1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow-x: hidden;
 }
 
@@ -47,7 +50,7 @@
 
 .book-now-btn {
   position: relative;
-  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  background: #007bff;
   color: white;
   border: none;
   padding: 1.5rem 3rem;
@@ -87,51 +90,6 @@
 
 .book-now-btn:hover .btn-glow {
   opacity: 1;
-}
-
-/* Hero Animation */
-.hero-image {
-  animation: slideInRight 1s ease-out;
-}
-
-.plane-animation {
-  position: relative;
-  height: 400px;
-  width: 100%;
-}
-
-.plane {
-  position: absolute;
-  font-size: 4rem;
-  top: 50%;
-  left: 20%;
-  animation: fly 6s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.cloud {
-  position: absolute;
-  font-size: 3rem;
-  opacity: 0.7;
-  animation: float 4s ease-in-out infinite;
-}
-
-.cloud-1 {
-  top: 20%;
-  left: 60%;
-  animation-delay: 0s;
-}
-
-.cloud-2 {
-  top: 70%;
-  left: 70%;
-  animation-delay: 1s;
-}
-
-.cloud-3 {
-  top: 40%;
-  left: 10%;
-  animation-delay: 2s;
 }
 
 /* Features Section */

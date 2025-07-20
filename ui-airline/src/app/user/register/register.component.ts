@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,27 +10,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
-      role: ['user', Validators.required], // default: user
+      role: ['user', Validators.required],
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      airline: [''] // Optional — only for staff
+      airline: ['']
     });
   }
-  get isStaff() {
+
+  get isStaff(): boolean {
     return this.registerForm.get('role')?.value === 'staff';
   }
+
   onSubmit() {
     if (this.registerForm.valid) {
-      const data = this.registerForm.value;
-      console.log('Register data:', data);
-      // TODO: Send to backend
+      console.log('Form Submitted', this.registerForm.value);
+      // Navigate to login
+      this.router.navigate(['/user/login']);
     }
   }
 }
-
-
-

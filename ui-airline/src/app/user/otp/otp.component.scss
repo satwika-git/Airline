@@ -1,0 +1,77 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('/assets/login1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.otp-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 380px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.otp-inputs input {
+  width: 45px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #578fcb;
+  cursor: not-allowed;
+}
+
+.otp-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.otp-actions a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.otp-actions a:hover {
+  text-decoration: underline;
+}

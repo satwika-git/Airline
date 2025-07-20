@@ -21,11 +21,26 @@
 
 h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  margin: 16px 0;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 form > div {
-  margin-bottom: 20px; /* Space between form blocks */
+  margin-bottom: 20px;
 }
 
 label {
@@ -55,7 +70,6 @@ button[type="submit"] {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 8px;
 }
 
 button[type="submit"]:hover {
@@ -67,12 +81,6 @@ button[type="submit"]:disabled {
   cursor: not-allowed;
 }
 
-div[style*='margin-top'] {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 24px !important;
-}
-
 a {
   color: #007bff;
   text-decoration: none;
@@ -80,25 +88,4 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-p {
-  margin-top: 12px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.radio-group {
-  display: flex;
-  margin: 12px 0 24px;
-  justify-content: flex-start; /* align to left */
-  gap: 30px; /* reasonable spacing between radio buttons */
-}
-
-.radio-group label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  font-size: 15px;
 }

@@ -1,21 +1,19 @@
-<body>
 <div class="register-container">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <h2>Register</h2>
     <p>Choose your account type to proceed with registration:</p>
-    <!-- Role selection -->
+
     <div class="radio-group">
       <label>
-        <input type="radio" value="user" formControlName="role" /> 
-         <span>User</span>
-    </label>
+        <input type="radio" formControlName="role" value="user" />
+        <span>User</span>
+      </label>
       <label>
-        <input type="radio" value="staff" formControlName="role" /> 
+        <input type="radio" formControlName="role" value="staff" />
         <span>Staff</span>
       </label>
     </div>
 
-    <!-- Common Fields -->
     <div>
       <label>Name:</label>
       <input formControlName="name" placeholder="Enter your name" />
@@ -36,23 +34,22 @@
       <input type="password" formControlName="confirmPassword" placeholder="Confirm password" />
     </div>
 
-    <!-- Conditional field for staff -->
     <div *ngIf="isStaff">
       <label>Airline:</label>
       <input formControlName="airline" placeholder="Enter airline name" />
     </div>
 
-    <!-- Submit -->
     <div>
-      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+      <button type="submit" [disabled]="
+        registerForm.invalid || 
+        registerForm.value.password !== registerForm.value.confirmPassword || 
+        (isStaff && !registerForm.value.airline)
+      ">Register</button>
     </div>
 
-    <!--To navigate to Login page-->
     <div style="margin-top: 16px;">
       <span>Already have an account? </span>
       <a routerLink="/user/login">Login here</a>
     </div>
   </form>
 </div>
-</body>
-

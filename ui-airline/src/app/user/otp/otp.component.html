@@ -1,0 +1,22 @@
+<div class="otp-container">
+  <h2>OTP Verification</h2>
+  <p>Please enter the 6-digit code sent to your email</p>
+
+  <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+    <div class="otp-inputs">
+      <input type="text" maxlength="1" formControlName="digit1" />
+      <input type="text" maxlength="1" formControlName="digit2" />
+      <input type="text" maxlength="1" formControlName="digit3" />
+      <input type="text" maxlength="1" formControlName="digit4" />
+      <input type="text" maxlength="1" formControlName="digit5" />
+      <input type="text" maxlength="1" formControlName="digit6" />
+    </div>
+
+    <button type="submit" [disabled]="!isOtpComplete">Verify OTP</button>
+  </form>
+
+  <div class="otp-actions">
+    <a routerLink="/user/login">Back to Login</a>
+    <a href="#">Resend OTP</a>
+  </div>
+</div>
