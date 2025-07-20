@@ -1,51 +1,135 @@
-<div class="layout-container">
-  <!-- Sidebar -->
-    <div class="sidebar">
-    <h3>Staff Panel</h3>
-    <ul>
-      <li><a routerLink="/staff/add-flight">Add Flight</a></li>
-      <li><a routerLink="/staff/add-location">Add Location</a></li>
-      <li><a routerLink="/staff/add-schedule">Add Schedule</a></li>
-    </ul>
-  </div>
+<div class="staff-container">
+      <header class="staff-header">
+        <div class="header-content">
+          <h1>Airline Staff Dashboard</h1>
+          <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+      </header>
 
-  <!-- Main Content -->
-  <div class="page-container">
-    <div class="form-card">
-      <h2>Add New Flight</h2>
-
-      <form (ngSubmit)="addFlight()" #flightForm="ngForm">
-        <div class="input-row">
-          <label>Flight Code</label>
-          <input type="text" [(ngModel)]="flight.flightCode" name="flightCode" required />
+      <div class="staff-content">
+        <div class="action-buttons">
+          <button class="action-btn" (click)="showForm('flight')">
+            <span class="btn-icon">✈️</span>
+            Add Flight
+          </button>
+          <button class="action-btn" (click)="showForm('schedule')">
+            <span class="btn-icon">📅</span>
+            Add Schedule
+          </button>
+          <button class="action-btn" (click)="showForm('location')">
+            <span class="btn-icon">📍</span>
+            Add Location
+          </button>
         </div>
 
-        <div class="input-row">
-          <label>From (Airport ID)</label>
-          <select [(ngModel)]="flight.departureId" name="departureId" required>
-            <option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</option>
-          </select>
+        <!-- Flight Form -->
+        <div class="form-modal" *ngIf="activeForm === 'flight'" (click)="hideForm()">
+          <div class="form-container" (click)="$event.stopPropagation()">
+            <div class="form-header">
+              <h2>Add New Flight</h2>
+              <button class="close-btn" (click)="hideForm()">×</button>
+            </div>
+            <form (ngSubmit)="addFlight()" class="staff-form">
+              <div class="form-group">
+                <label for="flightCode">Flight Code</label>
+                <input type="text" id="flightCode" [(ngModel)]="flightData.flightCode" name="flightCode" placeholder="e.g., EK123" required>
+              </div>
+              <div class="form-group">
+                <label for="airline">Airline</label>
+                <select id="airlineId" [(ngModel)]="flightData.airlineId" name="airlineId" required>
+                  <option value="">Select Airline</option>
+                  <option value="emirates">Emirates</option>
+                  <option value="qatar">Qatar Airways</option>
+                  <option value="etihad">Etihad Airways</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="departureId">Departure Location ID</label>
+                <input type="text" id="departureId" [(ngModel)]="flightData.departureId" name="departureId" placeholder="e.g., 1 for DEL" required>
+              </div>
+              <div class="form-group">
+                <label for="arrivalId">Arrival Location ID</label>
+                <input type="text" id="arrivalId" [(ngModel)]="flightData.arrivalId" name="arrivalId" placeholder="e.g., 2 for BOM" required>
+              </div>
+              <div class="form-group">
+                <label for="aircraftType">Aircraft Type</label>
+                <input type="text" id="aircraftType" [(ngModel)]="flightData.aircraftType" name="aircraftType" placeholder="e.g., Airbus A320" required>
+              </div>
+              <button type="submit" class="submit-btn">Add Flight</button>
+            </form>
+          </div>
         </div>
 
-        <div class="input-row">
-          <label>To (Airport ID)</label>
-          <select [(ngModel)]="flight.arrivalId" name="arrivalId" required>
-            <option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</option>
-          </select>
+        <!-- Schedule Form -->
+        <div class="form-modal" *ngIf="activeForm === 'schedule'" (click)="hideForm()">
+          <div class="form-container" (click)="$event.stopPropagation()">
+            <div class="form-header">
+              <h2>Add Flight Schedule</h2>
+              <button class="close-btn" (click)="hideForm()">×</button>
+            </div>
+            <form (ngSubmit)="addSchedule()" class="staff-form">
+              <div class="form-group">
+                <label for="flightId">Flight ID</label>
+                <input type="text" id="flightId" [(ngModel)]="scheduleData.flightId" name="flightId" placeholder="e.g., 501" required>
+              </div>
+              <div class="form-group">
+                <label for="departurDateTime">Departure Date & Time</label>
+                <input type="datetime-local" id="departurDateTime" [(ngModel)]="scheduleData.departurDateTime" name="departurDateTime" required>
+             </div>
+              <div class="form-group">
+                <label for="arrivalDateTime">Arrival Date & Time</label>
+                <input type="datetime-local" id="arrivalDateTime" [(ngModel)]="scheduleData.arrivalDateTime" name="arrivalDateTime" required>
+             </div>
+              <div class="form-group">
+                <label for="Duration">Duration</label>
+                <input type="text" id="Duration" [(ngModel)]="scheduleData.Duration" name="Duration" placeholder="e.g., 2h 30m" required>
+             </div>
+              <div class="form-group">
+                <label for="flightStatus">Flight Status</label>
+                <input type="text" id="flightStatus" [(ngModel)]="scheduleData.flightStatus" name="flightStatus" placeholder="e.g., On Time" required>
+             </div>
+              <button type="submit" class="submit-btn">Add Schedule</button>
+            </form>
+          </div>
         </div>
 
-        <div class="input-row">
-          <label>Aircraft Type</label>
-          <input type="text" [(ngModel)]="flight.aircraftType" name="aircraftType" required />
+        <!-- Location Form -->
+        <div class="form-modal" *ngIf="activeForm === 'location'" (click)="hideForm()">
+          <div class="form-container" (click)="$event.stopPropagation()">
+            <div class="form-header">
+              <h2>Add New Location</h2>
+              <button class="close-btn" (click)="hideForm()">×</button>
+            </div>
+            <form (ngSubmit)="addLocation()" class="staff-form">
+              <div class="form-group">
+                <label for="id">Location ID</label>
+                <input type="text" id="id" [(ngModel)]="locationData.id" name="id" placeholder="e.g., 6" required>
+             </div>
+              <div class="form-group">
+                <label for="code">Airport Code</label>
+                <input type="text" id="code" [(ngModel)]="locationData.code" name="code" placeholder="e.g., DXB" maxlength="3" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Airport Name</label>
+                <input type="text" id="name" [(ngModel)]="locationData.name" name="name" placeholder="e.g., Dubai International Airport" required>
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" [(ngModel)]="locationData.city" name="city" placeholder="e.g., Dubai" required>
+              </div>
+              <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" id="country" [(ngModel)]="locationData.country" name="country" placeholder="e.g., UAE" required>
+              </div>
+              <button type="submit" class="submit-btn">Add Location</button>
+            </form>
+          </div>
         </div>
-
-        <div class="input-row">
-          <label>Airline ID</label>
-          <input type="number" [(ngModel)]="flight.airlineId" name="airlineId" required />
-        </div>
-
-        <button class="submit-btn" type="submit">Submit Flight</button>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+
+
+
+
+
+

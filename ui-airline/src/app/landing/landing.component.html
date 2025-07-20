@@ -1,4 +1,55 @@
-<div class="carousel">
+<div class="landing-container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Your Journey Begins Here
+            </h1>
+            <p class="hero-subtitle">
+              Discover amazing destinations around the world with our premium flight booking service. 
+              Experience comfort, reliability, and exceptional value.
+            </p>
+            <button 
+              class="book-now-btn" 
+              (click)="navigateToAuth()"
+              [class.clicked]="isClicked"
+              (mouseenter)="onHover(true)"
+              (mouseleave)="onHover(false)">
+              <span class="btn-text">Book Your Flight Now</span>
+              <div class="btn-glow"></div>
+            </button>
+          </div>
+          <div class="hero-image">
+            <div class="plane-animation">
+              <div class="plane">✈️</div>
+              <div class="cloud cloud-1">☁️</div>
+              <div class="cloud cloud-2">☁️</div>
+              <div class="cloud cloud-3">☁️</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features-section">
+        <div class="container">
+          <h2 class="section-title">Why Choose Airline?</h2>
+          <div class="features-grid">
+            <div class="feature-card" *ngFor="let feature of features">
+              <div class="feature-icon">{{ feature.icon }}</div>
+              <h3 class="feature-title">{{ feature.title }}</h3>
+              <p class="feature-description">{{ feature.description }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+<!-- <div class="carousel">
   <div class="images">
     <img *ngFor="let img of visibleImages" [src]="img" alt="Flight image">
   </div>
@@ -6,6 +57,6 @@
 
 <div class="button-container">
   <button class="book-button" (click)="goToLogin()">Book My Flights</button>
-</div>
+</div> -->
 
 

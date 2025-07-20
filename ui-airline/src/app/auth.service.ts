@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-   //constructor() { }
+   constructor() { }
    login(username: string, password: string): boolean {
     if (username === 'user' && password === 'pass') {
       localStorage.setItem('userToken', 'demo-token');
