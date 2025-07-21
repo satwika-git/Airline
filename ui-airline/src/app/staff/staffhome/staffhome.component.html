@@ -10,15 +10,15 @@
         <div class="action-buttons">
           <button class="action-btn" (click)="showForm('flight')">
             <span class="btn-icon">✈️</span>
-            Add Flight
+            <span>Add Flight</span>
           </button>
           <button class="action-btn" (click)="showForm('schedule')">
             <span class="btn-icon">📅</span>
-            Add Schedule
+            <span>Add Schedule</span>
           </button>
           <button class="action-btn" (click)="showForm('location')">
             <span class="btn-icon">📍</span>
-            Add Location
+            <span>Add Location</span>
           </button>
         </div>
 
@@ -73,8 +73,8 @@
                 <input type="text" id="flightId" [(ngModel)]="scheduleData.flightId" name="flightId" placeholder="e.g., 501" required>
               </div>
               <div class="form-group">
-                <label for="departurDateTime">Departure Date & Time</label>
-                <input type="datetime-local" id="departurDateTime" [(ngModel)]="scheduleData.departurDateTime" name="departurDateTime" required>
+                <label for="departureDateTime">Departure Date & Time</label>
+                <input type="datetime-local" id="departureDateTime" [(ngModel)]="scheduleData.departureDateTime" name="departureDateTime" required>
              </div>
               <div class="form-group">
                 <label for="arrivalDateTime">Arrival Date & Time</label>

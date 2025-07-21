@@ -44,7 +44,7 @@ export class StaffhomeComponent {
   scheduleData = {
     id: '',
     flightId: '',
-    departurDateTime: '',
+    departureDateTime: '',
     arrivalDateTime: '',
     Duration: '',
     flightStatus: '',
@@ -76,7 +76,7 @@ export class StaffhomeComponent {
   
   resetForms() {
     this.flightData = { flightCode: '', airlineId: '', departureId: '', arrivalId: '', aircraftType: '' };
-    this.scheduleData = { id: '', flightId: '', departurDateTime: '', arrivalDateTime: '', Duration: '', flightStatus: ''};
+    this.scheduleData = { id: '', flightId: '', departureDateTime: '', arrivalDateTime: '', Duration: '', flightStatus: ''};
     this.locationData = { id: '', code: '', name: '', city: '', country: ''};
   }
   hideForm() {
